@@ -6,10 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EtupModule } from './etup/etup.module.js';
 
 @Module({
-  imports: [ ConfigModule.forRoot({
-    envFilePath: '.env',
-    isGlobal: true,
-  }),
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -29,5 +30,4 @@ import { EtupModule } from './etup/etup.module.js';
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {}
