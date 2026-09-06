@@ -1,3 +1,72 @@
-<pre>
-  {{ datos() | json }}
-</pre>
+<label for="anio">
+    Año
+    <select id="anio" [(ngModel)]="anio" (change)="cargar()">
+        @for (a of filtros()?.anios ?? []; track a){
+            <option [value]="a">{{ a }}</option>
+        }
+    </select>
+</label>
+<label for="mesInicio">
+    Mes Inicio
+    <select id="mesInicio" [(ngModel)]="mesInicio" (change)="cargar()">
+        @for (m of meses; track m.num){
+            <option [value]="m.num">{{ m.nombre }}</option>
+        }
+    </select>
+</label>
+<label for="mesFin">
+    Mes fin
+    <select id="mesFin" [(ngModel)]="mesFin" (change)="cargar()">
+        @for (m of meses; track m.num){
+            <option [value]="m.num">{{ m.nombre }}</option>
+        }
+    </select>
+</label>
+<label for="transporte">
+    Transporte
+    <select id="transporte" [(ngModel)]="transporte" (change)="cargar()">
+        <option value="">Todos</option>
+        @for (t of filtros()?.transportes ?? []; track t){
+            <option [value]="t">{{ t }}</option>
+        }
+    </select>
+</label>
+<table>
+    @if (datos()) {
+        <tr>
+            <td>Ingresos por pasaje</td>
+            <td>{{ datos()!.ingresosPorPasaje != null
+                ? (datos()!.ingresosPorPasaje | currency:'MXN':'symbol-narrow':'1.0-0')
+                : '-' }}
+            </td>
+        </tr>
+        <tr>
+            <td>Kilómetros recorridos</td>
+            <td>{{  datos()!.kilometrosRecorridos != null 
+                ? (`${datos()!.kilometrosRecorridos | number:'1.0-0'} km`)
+                : '-' }}
+            </td>
+        </tr>
+        <tr>
+            <td>Longitud de servicio</td>
+            <td>{{  datos()!.longitudDeServicio != null 
+                ? (`${datos()!.longitudDeServicio | number:'1.0-0'} km`)
+                : '-' }}
+            </td>
+        </tr>
+        <tr>
+            <td>Pasajeros transportados</td>
+            <td>{{  datos()!.pasajerosTransportados != null 
+                ? (datos()!.pasajerosTransportados | number:'1.0-0')
+                : '-' }}
+            </td>
+        </tr>
+        <tr>
+            <td>Unidades en operación</td>
+            <td>{{  datos()!.unidadesEnOperacion != null 
+                ? (datos()!.unidadesEnOperacion | number:'1.0-0')
+                : '-' }}
+            </td>
+        </tr>
+    }
+</table>

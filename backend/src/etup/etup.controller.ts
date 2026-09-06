@@ -19,4 +19,9 @@ export class EtupController {
       transporte,
     );
   }
+
+  @Get('filtros')
+  async getFiltros() {
+    return this.etupService.obtenerFiltros();
+  }
 }

@@ -77,4 +77,22 @@ export class EtupService {
     );
     return resultFinal;
   }
+
+  async obtenerFiltros(
+  ){
+    let anio = `SELECT DISTINCT anio
+        FROM etup
+        ORDER BY anio DESC
+      `;
+    let transporte = `SELECT DISTINCT transporte
+        FROM etup
+        ORDER BY transporte ASC
+      `;
+    let resultAnio = await this.repo.query(anio);
+    let resultTransporte = await this.repo.query(transporte);
+    return {
+      anios: resultAnio.map((r: any) => r.anio),
+      transportes: resultTransporte.map((r: any) => r.transporte),
+    };
+  }
 }
