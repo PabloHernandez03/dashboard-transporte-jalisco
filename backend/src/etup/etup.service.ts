@@ -78,8 +78,7 @@ export class EtupService {
     return resultFinal;
   }
 
-  async obtenerFiltros(
-  ){
+  async obtenerFiltros() {
     let anio = `SELECT DISTINCT anio
         FROM etup
         ORDER BY anio DESC

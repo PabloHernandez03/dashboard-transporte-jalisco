@@ -4,6 +4,7 @@ import { AppService } from './app.service.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EtupModule } from './etup/etup.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -21,11 +22,16 @@ import { EtupModule } from './etup/etup.module.js';
         password: configService.get<string>('POSTGRES_PASSWORD'),
         database: configService.get<string>('POSTGRES_DB'),
         autoLoadEntities: true,
+        ssl:
+          configService.get<string>('POSTGRES_SSL') === 'true'
+            ? { rejectUnauthorized: false }
+            : false,
         synchronize: configService.get<string>('NODE_ENV') !== 'production',
       }),
       inject: [ConfigService],
     }),
     EtupModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

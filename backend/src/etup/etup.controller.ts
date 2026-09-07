@@ -1,7 +1,9 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '../auth/auth.guard.js';
 import { EtupService } from './etup.service.js';
 
 @Controller('etup')
+@UseGuards(AuthGuard)
 export class EtupController {
   constructor(private readonly etupService: EtupService) {}
 
