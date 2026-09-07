@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --fondo: #f5f6f8;
+  --superficie: #ffffff;
+  --borde: #dcdfe4;
+  --texto: #1f2933;
+  --texto-suave: #66707a;
+  --acento: #1f5c8b;
+  --error: #b3261e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}

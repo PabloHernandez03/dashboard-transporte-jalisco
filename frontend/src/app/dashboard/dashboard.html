@@ -1,0 +1,85 @@
+<header class="barra">
+  <div>
+    <h1>Transporte Urbano de Pasajeros</h1>
+    <p class="subtitulo">Guadalajara, Jalisco &middot; Fuente: IIEG</p>
+  </div>
+  <button type="button" class="salir" (click)="salir()">Cerrar sesión</button>
+</header>
+
+<section class="filtros">
+  <label for="anio">
+    Año
+    <select id="anio" [(ngModel)]="anio" (change)="cargar()">
+      @for (a of filtros()?.anios ?? []; track a) {
+        <option [value]="a">{{ a }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="mesInicio">
+    Mes inicio
+    <select id="mesInicio" [(ngModel)]="mesInicio" (change)="cargar()">
+      @for (m of meses; track m.num) {
+        <option [value]="m.num">{{ m.nombre }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="mesFin">
+    Mes fin
+    <select id="mesFin" [(ngModel)]="mesFin" (change)="cargar()">
+      @for (m of meses; track m.num) {
+        <option [value]="m.num">{{ m.nombre }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="transporte">
+    Transporte
+    <select id="transporte" [(ngModel)]="transporte" (change)="cargar()">
+      <option value="">Todos</option>
+      @for (t of filtros()?.transportes ?? []; track t) {
+        <option [value]="t">{{ t }}</option>
+      }
+    </select>
+  </label>
+</section>
+
+@if (datos(); as d) {
+  <table class="metricas">
+    <thead>
+      <tr>
+        <th>Métrica</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ingresos por pasaje</td>
+        <td>{{ d.ingresosPorPasaje != null ? (d.ingresosPorPasaje | currency: 'MXN' : 'symbol-narrow' : '1.0-0') : '—' }}</td>
+      </tr>
+      <tr>
+        <td>Kilómetros recorridos</td>
+        <td>{{ d.kilometrosRecorridos != null ? (d.kilometrosRecorridos | number: '1.0-0') + ' km' : '—' }}</td>
+      </tr>
+      <tr>
+        <td>Pasajeros transportados</td>
+        <td>{{ d.pasajerosTransportados != null ? (d.pasajerosTransportados | number: '1.0-0') : '—' }}</td>
+      </tr>
+      <tr>
+        <td>Longitud de servicio <span class="nota">promedio del periodo</span></td>
+        <td>{{ d.longitudDeServicio != null ? (d.longitudDeServicio | number: '1.0-2') + ' km' : '—' }}</td>
+      </tr>
+      <tr>
+        <td>Unidades en operación <span class="nota">promedio del periodo</span></td>
+        <td>{{ d.unidadesEnOperacion != null ? (d.unidadesEnOperacion | number: '1.0-2') : '—' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="leyenda">
+    Las tres primeras métricas se acumulan en el periodo; longitud de servicio y unidades
+    en operación son existencias y se promedian. Un guion indica que ese transporte no
+    reporta la métrica.
+  </p>
+}

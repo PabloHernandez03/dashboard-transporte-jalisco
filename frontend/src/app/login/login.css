@@ -1,0 +1,66 @@
+.pantalla {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 340px;
+  padding: 2rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+
+.subtitulo {
+  margin: 0.25rem 0 1.5rem;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+label {
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+input {
+  margin-bottom: 1rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font: inherit;
+}
+
+input:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+button {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--acento);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error {
+  margin: 0.9rem 0 0;
+  color: var(--error);
+  font-size: 0.85rem;
+  text-align: center;
+}

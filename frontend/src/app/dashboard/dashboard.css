@@ -1,0 +1,102 @@
+:host {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.barra {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.subtitulo {
+  margin: 0.2rem 0 0;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.salir {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--superficie);
+  font: inherit;
+  cursor: pointer;
+}
+
+.salir:hover {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.filtros label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.filtros select {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--superficie);
+  font: inherit;
+  color: var(--texto);
+}
+
+.metricas {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.metricas th {
+  padding: 0.7rem 1rem;
+  background: #eef1f4;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  text-align: left;
+}
+
+.metricas th:last-child,
+.metricas td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricas td {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--borde);
+}
+
+.nota {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+}
+
+.leyenda {
+  margin-top: 1rem;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+}
